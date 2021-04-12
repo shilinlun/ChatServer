@@ -7,7 +7,9 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/shilinkun/Desktop/program/src/server/chatserver.cpp" "/home/shilinkun/Desktop/program/build/src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o"
   "/home/shilinkun/Desktop/program/src/server/chatservice.cpp" "/home/shilinkun/Desktop/program/build/src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o"
   "/home/shilinkun/Desktop/program/src/server/db/db.cpp" "/home/shilinkun/Desktop/program/build/src/server/CMakeFiles/ChatServer.dir/db/db.cpp.o"
+  "/home/shilinkun/Desktop/program/src/server/friendmodel.cpp" "/home/shilinkun/Desktop/program/build/src/server/CMakeFiles/ChatServer.dir/friendmodel.cpp.o"
   "/home/shilinkun/Desktop/program/src/server/main.cpp" "/home/shilinkun/Desktop/program/build/src/server/CMakeFiles/ChatServer.dir/main.cpp.o"
+  "/home/shilinkun/Desktop/program/src/server/offlinemessagemodel.cpp" "/home/shilinkun/Desktop/program/build/src/server/CMakeFiles/ChatServer.dir/offlinemessagemodel.cpp.o"
   "/home/shilinkun/Desktop/program/src/server/usermodel.cpp" "/home/shilinkun/Desktop/program/build/src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

@@ -2,7 +2,10 @@
 #include "public.hpp"
 
 #include <muduo/base/Logging.h>
+#include <vector>
+#include <string>
 using namespace muduo;
+using namespace std;
 
 ChatService *ChatService::instance()
 {
@@ -15,6 +18,8 @@ ChatService::ChatService()
 {
     _msgHandlerMap.insert({LOGIN_MSG, std::bind(&ChatService::login, this, _1, _2, _3)});
     _msgHandlerMap.insert({REG_MSG, std::bind(&ChatService::reg, this, _1, _2, _3)});
+    _msgHandlerMap.insert({ONE_CHAT_MSG, std::bind(&ChatService::oneChat, this, _1, _2, _3)});
+    _msgHandlerMap.insert({ADD_FRIEND_MSG, std::bind(&ChatService::addFriend, this, _1, _2, _3)});
 }
 
 // 处理登录业务
@@ -36,6 +41,14 @@ void ChatService::login(const TcpConnectionPtr &conn, json &js, Timestamp)
         }
         else
         {
+            // 在这里加{}主要就是设置作用域，lock_guard<mutex> lock(_connMutex)中lock_guard会在构造函数加锁，
+            // 析构函数释放锁，同时由于只需要insert需要锁，所以加一个作用域，这样避免给不必要的地方加锁，浪费资源
+            {
+                lock_guard<mutex> lock(_connMutex);
+                // 记录用户连接信息
+                _userConnMap.insert({id, conn});
+            }
+
             //登陆成功，然后更新用户登陆信息
             user.setState("online");
             _usermodel.updateState(user);
@@ -44,6 +57,32 @@ void ChatService::login(const TcpConnectionPtr &conn, json &js, Timestamp)
             response["error"] = 0; //0表示成功
             response["id"] = user.getId();
             response["name"] = user.getName();
+
+            // 查询该用户是否有离线信息
+            vector<string> vec = _offlinemodel.query(id);
+            if (!vec.empty())
+            {
+                response["offlinemsg"] = vec;
+                // 再删除离线消息
+                _offlinemodel.remove(id);
+            }
+
+            // 查询该用户的好友信息 并返回
+            vector<User> uservec = _friendmodel.query(id);
+            if (!uservec.empty())
+            {
+                vector<string> vec2;
+                for (auto &i : uservec)
+                {
+                    json js;
+                    js["id"] = i.getId();
+                    js["name"] = i.getName();
+                    js["state"] = i.getState();
+                    vec2.emplace_back(js.dump());
+                }
+                response["friends"] = vec2;
+            }
+
             conn->send(response.dump());
         }
     }
@@ -102,4 +141,68 @@ MsgHandler ChatService::getHandler(int msgid)
     {
         return _msgHandlerMap[msgid];
     }
+}
+
+// 处理客户端异常断开
+void ChatService::clientCloseException(const TcpConnectionPtr &conn)
+{
+    User user;
+    {
+        lock_guard<mutex> lock(_connMutex);
+
+        for (auto it = _userConnMap.begin(); it != _userConnMap.end(); it++)
+        {
+            if (it->second == conn)
+            {
+                user.setId(it->first);
+                // 找到该conn对应的id，把该键值对从_userConnMap删除
+                _userConnMap.erase(it);
+                break;
+            }
+        }
+    }
+    if (user.getId() != -1)
+    {
+        // 更新用户的状态信息
+        user.setState("offline");
+        _usermodel.updateState(user);
+    }
+}
+
+// 一对一聊天业务
+void ChatService::oneChat(const TcpConnectionPtr &conn, json &js, Timestamp)
+{
+    // 对方id
+    int toid = js["to"].get<int>();
+
+    {
+        lock_guard<mutex> lock(_connMutex);
+        auto it = _userConnMap.find(toid);
+        if (it != _userConnMap.end())
+        {
+            // toid在线，转发消息
+            it->second->send(js.dump());
+            return;
+        }
+    }
+
+    // 不在线，存储离线消息
+    _offlinemodel.insert(toid, js.dump());
+}
+
+// 服务器ctrl+c等异常发生，业务重置
+void ChatService::reset()
+{
+    // 把online状态的用户，重置为offline
+    _usermodel.resetState();
+}
+
+// 添加好友请求 msgid id friendid
+void ChatService::addFriend(const TcpConnectionPtr &conn, json &js, Timestamp)
+{
+    int userid = js["id"].get<int>();
+    int friendid = js["friendid"].get<int>();
+
+    // 存储好友信息
+    _friendmodel.insert(userid, friendid);
 }

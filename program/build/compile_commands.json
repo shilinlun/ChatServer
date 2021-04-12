@@ -11,8 +11,18 @@
 },
 {
   "directory": "/home/shilinkun/Desktop/program/build/src/server",
+  "command": "/bin/g++-8   -I/home/shilinkun/Desktop/program/include -I/home/shilinkun/Desktop/program/include/server -I/home/shilinkun/Desktop/program/thirdparty -I/home/shilinkun/Desktop/program/include/server/db  -g -g   -o CMakeFiles/ChatServer.dir/friendmodel.cpp.o -c /home/shilinkun/Desktop/program/src/server/friendmodel.cpp",
+  "file": "/home/shilinkun/Desktop/program/src/server/friendmodel.cpp"
+},
+{
+  "directory": "/home/shilinkun/Desktop/program/build/src/server",
   "command": "/bin/g++-8   -I/home/shilinkun/Desktop/program/include -I/home/shilinkun/Desktop/program/include/server -I/home/shilinkun/Desktop/program/thirdparty -I/home/shilinkun/Desktop/program/include/server/db  -g -g   -o CMakeFiles/ChatServer.dir/main.cpp.o -c /home/shilinkun/Desktop/program/src/server/main.cpp",
   "file": "/home/shilinkun/Desktop/program/src/server/main.cpp"
+},
+{
+  "directory": "/home/shilinkun/Desktop/program/build/src/server",
+  "command": "/bin/g++-8   -I/home/shilinkun/Desktop/program/include -I/home/shilinkun/Desktop/program/include/server -I/home/shilinkun/Desktop/program/thirdparty -I/home/shilinkun/Desktop/program/include/server/db  -g -g   -o CMakeFiles/ChatServer.dir/offlinemessagemodel.cpp.o -c /home/shilinkun/Desktop/program/src/server/offlinemessagemodel.cpp",
+  "file": "/home/shilinkun/Desktop/program/src/server/offlinemessagemodel.cpp"
 },
 {
   "directory": "/home/shilinkun/Desktop/program/build/src/server",

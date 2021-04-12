@@ -1,0 +1,25 @@
+CREATE TABLE user(id INT AUTO_INCREMENT,name VARCHAR(30) NOT NULL UNIQUE,password VARCHAR(50) NOT NULL,state ENUM('online','offline') DEFAULT 'offline',PRIMARY KEY(id));
+CREATE TABLE friend(userid INT NOT NULL,friendid INT NOT NULL,PRIMARY KEY(userid,friendid));
+CREATE TABLE allgroup(id INT AUTO_INCREMENT,groupname VARCHAR(50) NOT NULL UNIQUE,groupdesc VARCHAR(200) DEFAULT '',PRIMARY KEY(id));
+CREATE TABLE groupuser(groupid INT NOT NULL,userid INT NOT NULL,grouprole ENUM('creator','normal') DEFAULT 'normal',PRIMARY KEY(groupid,userid));
+CREATE TABLE offlinemessage(userid INT NOT NULL,message VARCHAR(500) NOT NULL); userid不能像老师说的添加一个主键，否则同一个人给其他人发送消息，userid都是同一个，就不能再插入到数据库中
+
+
+lisi登陆
+{"msgid":1,"id":2,"password":"123456"}
+
+zhangsan登陆
+{"msgid":1,"id":1,"password":"123456"}
+
+lisi给zhangsan发送消息
+{"msgid":5,"id":2,"from":"lisi","to":1,"msg":"hello4"}
+
+user和friend联合查询
+通过传入的userid，查找friendid（有很多），然后通过friendid查询对应的id、name、state
+select a.id,a.name,a.state from user a inner join friend b on b.friendid = a.id where b.userid = %d
+
+添加好友
+{"msgid":6,"id":1,"friendid":2}
+
+groupuser表存在的意义：
+由于组和组员是多对多的关系，所以需要一张中间表来建立连接
