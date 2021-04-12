@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/server/db/db.h
+mysql/mysql.h
+-
+string
+-
+
+../include/server/user.hpp
+string
+-
+
+../include/server/usermodel.hpp
+user.hpp
+../include/server/user.hpp
+
+/home/shilinkun/Desktop/program/src/server/usermodel.cpp
+usermodel.hpp
+/home/shilinkun/Desktop/program/src/server/usermodel.hpp
+db.h
+/home/shilinkun/Desktop/program/src/server/db.h
+iostream
+-
+

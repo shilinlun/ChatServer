@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/shilinkun/Desktop/program/build/src/server",
+  "command": "/bin/g++-8   -I/home/shilinkun/Desktop/program/include -I/home/shilinkun/Desktop/program/include/server -I/home/shilinkun/Desktop/program/thirdparty -I/home/shilinkun/Desktop/program/include/server/db  -g -g   -o CMakeFiles/ChatServer.dir/chatserver.cpp.o -c /home/shilinkun/Desktop/program/src/server/chatserver.cpp",
+  "file": "/home/shilinkun/Desktop/program/src/server/chatserver.cpp"
+},
+{
+  "directory": "/home/shilinkun/Desktop/program/build/src/server",
+  "command": "/bin/g++-8   -I/home/shilinkun/Desktop/program/include -I/home/shilinkun/Desktop/program/include/server -I/home/shilinkun/Desktop/program/thirdparty -I/home/shilinkun/Desktop/program/include/server/db  -g -g   -o CMakeFiles/ChatServer.dir/chatservice.cpp.o -c /home/shilinkun/Desktop/program/src/server/chatservice.cpp",
+  "file": "/home/shilinkun/Desktop/program/src/server/chatservice.cpp"
+},
+{
+  "directory": "/home/shilinkun/Desktop/program/build/src/server",
+  "command": "/bin/g++-8   -I/home/shilinkun/Desktop/program/include -I/home/shilinkun/Desktop/program/include/server -I/home/shilinkun/Desktop/program/thirdparty -I/home/shilinkun/Desktop/program/include/server/db  -g -g   -o CMakeFiles/ChatServer.dir/main.cpp.o -c /home/shilinkun/Desktop/program/src/server/main.cpp",
+  "file": "/home/shilinkun/Desktop/program/src/server/main.cpp"
+},
+{
+  "directory": "/home/shilinkun/Desktop/program/build/src/server",
+  "command": "/bin/g++-8   -I/home/shilinkun/Desktop/program/include -I/home/shilinkun/Desktop/program/include/server -I/home/shilinkun/Desktop/program/thirdparty -I/home/shilinkun/Desktop/program/include/server/db  -g -g   -o CMakeFiles/ChatServer.dir/usermodel.cpp.o -c /home/shilinkun/Desktop/program/src/server/usermodel.cpp",
+  "file": "/home/shilinkun/Desktop/program/src/server/usermodel.cpp"
+},
+{
+  "directory": "/home/shilinkun/Desktop/program/build/src/server",
+  "command": "/bin/g++-8   -I/home/shilinkun/Desktop/program/include -I/home/shilinkun/Desktop/program/include/server -I/home/shilinkun/Desktop/program/thirdparty -I/home/shilinkun/Desktop/program/include/server/db  -g -g   -o CMakeFiles/ChatServer.dir/db/db.cpp.o -c /home/shilinkun/Desktop/program/src/server/db/db.cpp",
+  "file": "/home/shilinkun/Desktop/program/src/server/db/db.cpp"
+}
+]
