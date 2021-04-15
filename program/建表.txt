@@ -2,7 +2,7 @@ CREATE TABLE user(id INT AUTO_INCREMENT,name VARCHAR(30) NOT NULL UNIQUE,passwor
 CREATE TABLE friend(userid INT NOT NULL,friendid INT NOT NULL,PRIMARY KEY(userid,friendid));
 CREATE TABLE allgroup(id INT AUTO_INCREMENT,groupname VARCHAR(50) NOT NULL UNIQUE,groupdesc VARCHAR(200) DEFAULT '',PRIMARY KEY(id));
 CREATE TABLE groupuser(groupid INT NOT NULL,userid INT NOT NULL,grouprole ENUM('creator','normal') DEFAULT 'normal',PRIMARY KEY(groupid,userid));
-CREATE TABLE offlinemessage(userid INT NOT NULL,message VARCHAR(500) NOT NULL); userid不能像老师说的添加一个主键，否则同一个人给其他人发送消息，userid都是同一个，就不能再插入到数据库中
+CREATE TABLE offlinemessage(userid INT NOT NULL,message VARCHAR(500) NOT NULL); userid不能设置为一个主键，否则同一个人给其他人发送消息，userid都是同一个，就不能再插入到数据库中
 
 
 lisi登陆
@@ -23,3 +23,5 @@ select a.id,a.name,a.state from user a inner join friend b on b.friendid = a.id 
 
 groupuser表存在的意义：
 由于组和组员是多对多的关系，所以需要一张中间表来建立连接
+
+面试时候问可以达到多少量级，就说1000左右

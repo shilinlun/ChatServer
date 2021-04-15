@@ -10,6 +10,7 @@
 #include "usermodel.hpp"
 #include "offlinemessagemodel.hpp"
 #include "friendmodel.hpp"
+#include "groupmodel.hpp"
 using namespace std;
 using namespace muduo;
 using namespace muduo::net;
@@ -37,6 +38,15 @@ public:
     // 添加好友请求
     void addFriend(const TcpConnectionPtr &conn, json &js, Timestamp);
 
+    // 创建群组业务
+    void createGroup(const TcpConnectionPtr &conn, json &js, Timestamp time);
+    // 加入群组业务
+    void addGroup(const TcpConnectionPtr &conn, json &js, Timestamp time);
+    // 群组聊天业务
+    void groupChat(const TcpConnectionPtr &conn, json &js, Timestamp time);
+    // 处理注销业务
+    void loginout(const TcpConnectionPtr &conn, json &js, Timestamp time);
+
     // 获取消息对应的处理器
     MsgHandler getHandler(int msgid);
 
@@ -55,6 +65,7 @@ private:
     UserModel _usermodel;
     OfflineMsgModel _offlinemodel;
     FriendModel _friendmodel;
+    GroupModel _groupmodel;
 
     // 存储在线用户的连接，因为比如用户1向用户2发送请求，这时候需要服务器来做中间转化
     // 所以服务器需要知道用户2是否在线

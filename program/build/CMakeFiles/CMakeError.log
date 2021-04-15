@@ -1,0 +1,17 @@
+Detecting C [-std=c11] compiler features failed to compile with the following output:
+Change Dir: /home/shilinkun/桌面/program/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_284ed/fast"
+/usr/bin/make -f CMakeFiles/cmTC_284ed.dir/build.make CMakeFiles/cmTC_284ed.dir/build
+make[1]: 进入目录“/home/shilinkun/桌面/program/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_284ed.dir/feature_tests.c.o
+/usr/bin/c99-gcc   -std=c11 -o CMakeFiles/cmTC_284ed.dir/feature_tests.c.o   -c /home/shilinkun/桌面/program/build/CMakeFiles/feature_tests.c
+c99-gcc called with non ISO C99 option -std=c11
+CMakeFiles/cmTC_284ed.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_284ed.dir/feature_tests.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_284ed.dir/feature_tests.c.o] Error 1
+make[1]: 离开目录“/home/shilinkun/桌面/program/build/CMakeFiles/CMakeTmp”
+Makefile:126: recipe for target 'cmTC_284ed/fast' failed
+make: *** [cmTC_284ed/fast] Error 2
+
+
+

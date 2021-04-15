@@ -4,7 +4,7 @@
 //数据库配置信息
 static string server = "127.0.0.1";
 static string user = "root";
-static string password = "shilinkun";
+static string password = "shi";
 static string dbname = "chat";
 
 //初始化数据库连接

@@ -1,4 +1,4 @@
-# Install script for directory: /home/shilinkun/Desktop/program/src/server
+# Install script for directory: /home/shilinkun/桌面/program/src/server
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

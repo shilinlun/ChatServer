@@ -1,4 +1,4 @@
-# Install script for directory: /home/shilinkun/Desktop/program/src
+# Install script for directory: /home/shilinkun/桌面/program/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/shilinkun/Desktop/program/build/src/server/cmake_install.cmake")
+  include("/home/shilinkun/桌面/program/build/src/server/cmake_install.cmake")
+  include("/home/shilinkun/桌面/program/build/src/client/cmake_install.cmake")
 
 endif()
 
